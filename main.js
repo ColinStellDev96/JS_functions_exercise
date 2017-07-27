@@ -5,28 +5,29 @@
 [1] -> 1
 */
 
-var mode = function (arr) {
-    var max = 0;
-    var result;
-    var freq = 0;
-    for (var i = 0; i < arr.length; i++) {
-        if (arr[i] === arr[i + 1]) {
-            freq++;
+var mode = function (numbers) {
+    var keepTrack = {};
+        for (var i = 0; i < numbers.length; i++) {
+            if (!(numbers[i] in keepTrack) ) {
+                keepTrack[numbers[i]] = 1;
+            } else {
+                keepTrack[numbers[i]]++;
+            }
         }
-        else {
-            freq=1;
+        var biggestNum = 0;
+        var biggestKey = '';
+        for (var key in keepTrack) {
+            if (keepTrack[key] > biggestNum) {
+                biggestNum = keepTrack[key];
+                biggestKey = key;
+            }
         }
-        if (freq > max) {
-            result = arr[i];
-            max = freq;
-        }
-    }
-    console.log(result);
+        return biggestKey;
 };
 
-// mode([2, 4, 4, 4, 6, 6, 1]);
-// mode([0, 0, 0, 10]);
-// mode([1]);
+// console.log(mode([2, 4, 4, 4, 6, 6, 1]));
+// console.log(mode([0, 0, 0, 10]));
+// console.log(mode([1]));
 
 /*
 2. Write a funciton which, given a year as a number, returns whether that number is a leap year.
@@ -55,6 +56,17 @@ var leapYear = function (year) {
 [3,4,5] -> 1
 */
 
+var firstInt = function (nums) {
+    for (var i = 1; true; i++) {
+        if (nums.indexOf(i) === -1) {
+            return i;
+        }
+    }
+};
+
+// console.log(firstInt([1, 2, 5]));
+// console.log(firstInt([1, 2, 3, 4, 5]));
+// console.log(firstInt([3, 4, 5]));
 
 
 
@@ -63,7 +75,8 @@ var leapYear = function (year) {
 [1,1,2,3,1,2,3] -> [1,2,3]
 [1,4,4,4,2,2,4,4,4] -> [1,4,2]
 */
-// my solution uses E6 Set functionallity.
+// My solution uses E6 Set functionallity.
+// Set takes an array and returns it without any duplicates.
 
 var removeDuplicate = function (array) {
     return Array.from(new Set(array));
@@ -93,7 +106,9 @@ var removeDuplicate = function (array) {
 var samVar = function (arr, arr2) {
     for (i = 0; i <= arr.length; i++)
         for (j = 0; j <= arr2.length; j++) {
-        if (arr[i] === arr2[i]) {
+        if (arr.length < arr2.length) {
+            return false;
+        } else if (arr[i] === arr2[i]) {
             return true;
         } else {
             return false;
@@ -101,10 +116,10 @@ var samVar = function (arr, arr2) {
     }
 };
 
-console.log(samVar(['[]'], ['[]']));
-console.log(samVar([2, 3, 4], [1, 2, 3]));
-console.log(samVar(['a', 'c', 'b'], ['a', 'b', 'c']));
-console.log(samVar([1, 1, 1], [1, 1, 1, 1])); //STILL Returning True, Needs Work
+// console.log(samVar(['[]'], ['[]']));
+// console.log(samVar([2, 3, 4], [1, 2, 3]));
+// console.log(samVar(['a', 'c', 'b'], ['a', 'b', 'c']));
+// console.log(samVar([1, 1, 1], [1, 1, 1, 1]));
 
 
 /*
@@ -124,7 +139,26 @@ console.log(samVar([1, 1, 1], [1, 1, 1, 1])); //STILL Returning True, Needs Work
 -> [48, 5, 32, 2, 10, 11, 34, 95, 82, 93] (good!)
 -> [1, 1, 24, 63, 45, 84, 17, 11, 59, 13] (bad - duplicated number)
 */
+// ---- STEPS -----
+// create random #
+// check if it's in the array
+// add if not in array
+// skip if in array
 
+var randomNumbers = function () {
+    var returnArray = [];
+    for(let a = 0; a <= 10; a++) {
+        var rando = Math.floor((Math.random() * 100));
+        if (returnArray.indexOf(rando) != -1) {
+            continue;
+        } else {
+            returnArray.push(rando);
+        }
+    }
+    return returnArray;
+};
+// returnArray.push();
+console.log(randomNumbers());
 
 
 
