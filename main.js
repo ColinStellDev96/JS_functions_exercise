@@ -93,7 +93,7 @@ var removeDuplicate = function (array) {
 var samVar = function (arr, arr2) {
     for (i = 0; i <= arr.length; i++)
         for (j = 0; j <= arr2.length; j++) {
-        if (arr[i].length === arr2[j].length) {
+        if (arr[i] === arr2[i]) {
             return true;
         } else {
             return false;
@@ -102,9 +102,9 @@ var samVar = function (arr, arr2) {
 };
 
 console.log(samVar(['[]'], ['[]']));
-console.log(samVar([2, 3, 4], [1, 2, 3])); //STILL Returning True, Needs Work
+console.log(samVar([2, 3, 4], [1, 2, 3]));
 console.log(samVar(['a', 'c', 'b'], ['a', 'b', 'c']));
-console.log(samVar([1, 1, 1], [1, 1, 1, 1]));
+console.log(samVar([1, 1, 1], [1, 1, 1, 1])); //STILL Returning True, Needs Work
 
 
 /*
@@ -112,6 +112,8 @@ console.log(samVar([1, 1, 1], [1, 1, 1, 1]));
 [1,2,3,4,5,6,7,8], 4 -> [1,2,3,4,4,4,4,4]
 [1,5,7,3,1,5,7], 3 -> [1,3,3,3,1,3,3]
 */
+
+
 
 
 
