@@ -87,8 +87,8 @@ var removeDuplicate = function (array) {
     return newArr;
 };
 
-console.log(removeDuplicate([1, 1, 2, 3, 1, 2, 3]));
-console.log(removeDuplicate([1,4,4,4,2,2,4,4,4]));
+// console.log(removeDuplicate([1, 1, 2, 3, 1, 2, 3]));
+// console.log(removeDuplicate([1,4,4,4,2,2,4,4,4]));
 
 
 /*
@@ -97,13 +97,23 @@ console.log(removeDuplicate([1,4,4,4,2,2,4,4,4]));
 "The quick brown fox" -> "Hetay uickqay rownbay oxfay".
 */
 
+var pigLatin = function (string) {
+    var result = string.split(' ');
+    for (var i = 0; i < string.length; i ++) {
+        result.push(result.shift());
+    }
+        result.push('ay');
+        return result.join('');
+};
+
+console.log(pigLatin('The quick brown fox')); // NOT FINISHED WITH THIS YET
 
 
 
 /*
 6. Write a function which takes in two arrays and determines if they contain the same number of the same values.
 [], [] -> true
-[2, 3, 4], [1, 2, 3] -> false (STILL RETURNING TRUE, NEEDS WORK)
+[2, 3, 4], [1, 2, 3] -> false
 ["a", "c", "b"], ["a", "b", "c"] -> true
 [1, 1, 1], [1, 1, 1, 1] -> false
 */
