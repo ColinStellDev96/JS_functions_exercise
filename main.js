@@ -77,13 +77,18 @@ var firstInt = function (nums) {
 */
 // My solution uses E6 Set functionallity.
 // Set takes an array and returns it without any duplicates.
+// I created my function in a variable called removeDuplicate
+// Within the function I created a new variable to hold the Set Method
+// within the set metod, I plug in my array from the function parentheses.
+// return newArr; and plug in the arrays.
 
 var removeDuplicate = function (array) {
-    return Array.from(new Set(array));
+    var newArr = new Set(array);
+    return newArr;
 };
 
-// console.log(removeDuplicate([1, 1, 2, 3, 1, 2, 3]));
-// console.log(removeDuplicate([1,4,4,4,2,2,4,4,4]));
+console.log(removeDuplicate([1, 1, 2, 3, 1, 2, 3]));
+console.log(removeDuplicate([1,4,4,4,2,2,4,4,4]));
 
 
 /*
@@ -158,7 +163,7 @@ var randomNumbers = function () {
     return returnArray;
 };
 // returnArray.push();
-console.log(randomNumbers());
+// console.log(randomNumbers());
 
 
 
