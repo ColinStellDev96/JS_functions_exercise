@@ -97,13 +97,30 @@ var removeDuplicate = function (array) {
 "The quick brown fox" -> "Hetay uickqay rownbay oxfay".
 */
 
+// convert string into array of strings;
+// grab first letter of each string in the array (var)
+// move it to the back of respective string in the array (var)
+// add "ay" to each string in the array
+// concatinate string [one word] into one string
+// use join to convert array back into string
+// reverse function back to english string i started with.
+
 var pigLatin = function (string) {
-    var result = string.split(' ');
-    for (var i = 0; i < string.length; i ++) {
-        result.push(result.shift());
+    var stringArr = string.split(' ');
+    var finalArr;
+    for (var i = 0; i < stringArr.length; i++) {
+        var word = stringArr[i];
+        var letter = word.slice(0);
+
+        console.log(word);
+        console.log(letter);
+        console.log(newWord);
+        console.log('=-=-=-=-=-=');
+
+
+
+        // return letter;
     }
-        result.push('ay');
-        return result.join('');
 };
 
 console.log(pigLatin('The quick brown fox')); // NOT FINISHED WITH THIS YET
