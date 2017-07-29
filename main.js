@@ -110,20 +110,15 @@ var pigLatin = function (string) {
     var finalArr;
     for (var i = 0; i < stringArr.length; i++) {
         var word = stringArr[i];
-        var letter = word.slice(0);
-
-        console.log(word);
-        console.log(letter);
-        console.log(newWord);
-        console.log('=-=-=-=-=-=');
-
-
-
-        // return letter;
+        var word2 = word.slice(1);
+        var letter = word.slice(0,1);
+        var newWord = word2 + letter + 'ay';
+        finalArr = newWord.toString();
+        // console.log(finalArr);
     }
 };
 
-console.log(pigLatin('The quick brown fox')); // NOT FINISHED WITH THIS YET
+// console.log(pigLatin('The quick brown fox')); // NOT FINISHED WITH THIS YET
 
 
 
@@ -159,6 +154,10 @@ var samVar = function (arr, arr2) {
 [1,2,3,4,5,6,7,8], 4 -> [1,2,3,4,4,4,4,4]
 [1,5,7,3,1,5,7], 3 -> [1,3,3,3,1,3,3]
 */
+
+var maxCut = function (arr) {
+
+};
 
 
 
@@ -200,9 +199,30 @@ var randomNumbers = function () {
 [], [] -> []
 [-1, 0, 1], [-2, 2] -> [-2, -1, 0, 1, 2]
 */
+// arr both lists together
+// sort them accordingly
+//return new list.
 
+var sorted = function(arr1, arr2) {
+    var newArray = [];
+    var i = 0, j = 0, index = 0;
+    while(newArray.length != (arr1.length + 1 + arr2.length) -1) {
+        if (arr1 === arr2) {
+            return arr1;
+        }
+        else if (arr1[i] < arr2[j]) {
+            newArray.push(arr1[i]);
+            i++;
+        } else {
+            newArray.push(arr2[j]);
+            j++;
+        }
+    } return newArray;
+};
 
-
+// console.log(sorted([1,2,5,6,9], [3,4,5,10]));
+// console.log(sorted('[]', '[]'));
+// console.log(sorted([-1, 0, 1], [-2, 2]));
 
 
 /*
@@ -213,9 +233,26 @@ var randomNumbers = function () {
 [1, 3, -4, 5, 7, 9] -> [5, 7, 9] OR [1, 3, -4, 5, 7, 9]
 */
 
+// loop through length of array
+// determine which numbers will return a new array that would output largest sum
+//
 
+// STILL A WORK IN PROGRESS
 
+var subArray = function (arr) {
+    var arrMax = 0;
+    var newArrMax = 0;
 
+    for (var i = 0; i < arr.length; i++) {
+        arrMax = Math.max(0, arrMax + arr[i]);
+        newArrMax = Math.max(newArrMax, arrMax);
+    }
+    return newArrMax;
+};
+console.log(subArray([1, 1, 1, -1]));
+console.log(subArray([1, 5, -4, 3, 2, -3]));
+console.log(subArray([2, 2, -10, 5, -10, 2, 2]));
+console.log(subArray([1, 3, -4, 5, 7, 9]));
 
 /*
 11. One way of encoding a message is called a "square code". Given a message like:
