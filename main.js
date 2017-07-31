@@ -106,20 +106,39 @@ var removeDuplicate = function (array) {
 // reverse function back to english string i started with.
 
 var pigLatin = function (string) {
-    var stringArr = string.split(' ');
-    var finalArr;
+    var stringLow = string.toLowerCase();
+    var stringArr = stringLow.split(' ');
+    var finalArr = [];
     for (var i = 0; i < stringArr.length; i++) {
         var word = stringArr[i];
         var word2 = word.slice(1);
         var letter = word.slice(0,1);
         var newWord = word2 + letter + 'ay';
-        finalArr = newWord.toString();
-        // console.log(finalArr);
+        finalArr.push(newWord);
+        var stringSent = finalArr.join(' ');
     }
+    var finalStr = '"' + stringSent.charAt(0).toUpperCase() + stringSent.slice(1) + '"';
+    return finalStr; console.log(finalStr);
 };
 
-// console.log(pigLatin('The quick brown fox')); // NOT FINISHED WITH THIS YET
+var pigEnglish = function (string) {
+    var stringLow = string.toLowerCase();
+    var stringArr = stringLow.split(' ');
+    var finalArr = [];
+    for (var i = 0; i < stringArr.length; i++) {
+        var word = stringArr[i];
+        var firstLett = word[word.length - 3];
+        var word2 = firstLett + word;
+        var word3 = word2.slice(0, - 3);
+        finalArr.push(word3);
+        var stringSent = finalArr.join(' ');
+    }
+    var finalStr = '"' + stringSent.charAt(0).toUpperCase() + stringSent.slice(1) + '"'
+    return finalStr;
+};
 
+// console.log(pigLatin('The quick brown fox'));
+// console.log(pigEnglish('Hetay uickqay rownbay oxfay'));
 
 
 /*
@@ -155,13 +174,16 @@ var samVar = function (arr, arr2) {
 [1,5,7,3,1,5,7], 3 -> [1,3,3,3,1,3,3]
 */
 
-var maxCut = function (arr) {
-
+var maxCut = function (arr, num) {
+    for (var i = 0; i < arr.length; i++) {
+        if (arr[i] > num) {
+            arr[i] = num;
+        }
+    } return arr;
 };
 
-
-
-
+// console.log(maxCut([1,2,3,4,5,6,7,8], 4));
+// console.log(maxCut([1,5,7,3,1,5,7], 3));
 
 
 /*
@@ -178,7 +200,7 @@ var maxCut = function (arr) {
 
 var randomNumbers = function () {
     var returnArray = [];
-    for(let a = 0; a <= 10; a++) {
+    for(var a = 0; a <= 10; a++) {
         var rando = Math.floor((Math.random() * 100));
         if (returnArray.indexOf(rando) != -1) {
             continue;
@@ -189,7 +211,7 @@ var randomNumbers = function () {
     return returnArray;
 };
 // returnArray.push();
-// console.log(randomNumbers());
+console.log(randomNumbers());
 
 
 
@@ -234,7 +256,7 @@ var sorted = function(arr1, arr2) {
 */
 
 // loop through length of array
-// determine which numbers will return a new array that would output largest sum
+// determine which values will return a new array that would output largest sum
 //
 
 // STILL A WORK IN PROGRESS
@@ -242,13 +264,12 @@ var sorted = function(arr1, arr2) {
 var subArray = function (arr) {
     var arrMax = 0;
     var newArrMax = 0;
-
     for (var i = 0; i < arr.length; i++) {
         arrMax = Math.max(0, arrMax + arr[i]);
-        newArrMax = Math.max(newArrMax, arrMax);
-    }
-    return newArrMax;
+        newArrMax = Math.max(arrMax, newArrMax);
+    } return newArrMax;
 };
+
 console.log(subArray([1, 1, 1, -1]));
 console.log(subArray([1, 5, -4, 3, 2, -3]));
 console.log(subArray([2, 2, -10, 5, -10, 2, 2]));
